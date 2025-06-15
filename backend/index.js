@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const {connectToDatabase} = require('./config/db.js')
 const authRoutes = require('./routes/authRoutes.js')
+const productRoutes = require('./routes/productRoutes.js')
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,7 @@ connectToDatabase(process.env.MONGO_URI);
 
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 
 app.get("/",(req,res)=>{
